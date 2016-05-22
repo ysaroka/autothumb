@@ -1,0 +1,17 @@
+{
+    "name": "ysaroka/autothumb",
+    "description": "PHP library to automatically create thumbnails",
+    "authors": [
+        {
+            "name": "Yauhen Saroka",
+            "email": "johnkind49@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "imanee/imanee": "^1.2"
+    },
+    "autoload": {
+        "psr-4": { "ysaroka\\autothumb\\": "src" }
+    }
+}
