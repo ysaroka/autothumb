@@ -12,7 +12,7 @@ You can add AutoThumb to your project using the <a href="https://getcomposer.org
     $ composer require ysaroka/autothumb
 
 ## Getting Started
-Install the demo project using the <a href="https://getcomposer.org/" target="_blank">Composer</a> package manager in the root directory of the web server (in the demo used web server Apache):
+Install demo project using the <a href="https://getcomposer.org/" target="_blank">Composer</a> package manager in document root directory of the web server (in demo used web server Apache):
 
     $ composer create-project ysaroka/autothumb-demo ./
 
