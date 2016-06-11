@@ -214,11 +214,12 @@ class AutoThumb
     /**
      * Process of generating thumbnails
      * @param array $variables Variables for processing, 'image' and 'type', required
-     * @param bool $returnOnly Only return thumbnail data without saving and rendering
-     * @return $this
+     * @param bool $output Output thumbnail data
+     * @param bool $saveThumbnailFile Save thumbnail image file
+     * @return string The image data as a string.
      * @throws ProcessException
      */
-    public function process($variables, $returnOnly = false)
+    public function process($variables, $output = true, $saveThumbnailFile = true)
     {
         if (!isset ($variables['image'])) {
             throw new ProcessException('Failed to get variable "image".');
@@ -269,17 +270,19 @@ class AutoThumb
 
         $imageData = $thumbnailer->output();
 
-        if (!$returnOnly) {
-            if (file_put_contents($thumbnailImagePath, $imageData, LOCK_EX)) {
-                header("Content-type: " . $thumbnailer->getMime());
-                echo $imageData;
-                exit();
-            } else {
+        if ($saveThumbnailFile) {
+            if (!file_put_contents($thumbnailImagePath, $imageData, LOCK_EX)) {
                 throw new ProcessException('Unable to write file: "' . $thumbnailImagePath . '"');
             }
-        } else {
-            return $imageData;
         }
+
+        if ($output) {
+            header("Content-type: " . $thumbnailer->getMime());
+            echo $imageData;
+            exit();
+        }
+
+        return $imageData;
     }
 
     /**
