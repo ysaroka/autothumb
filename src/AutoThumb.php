@@ -262,6 +262,14 @@ class AutoThumb
         // Generate thumbnail and send to client if need
         $thumbnailer = $this->getThumbnailer();
         $thumbnailer->load($splImageFile->getRealPath());
+
+        if ($typeParams['width'] === 'orig') {
+            $typeParams['width'] = $thumbnailer->getWidth();
+        }
+        if ($typeParams['height'] === 'orig') {
+            $typeParams['height'] = $thumbnailer->getHeight();
+        }
+
         $thumbnailer->thumbnail($typeParams['width'], $typeParams['height'], $typeParams['crop'], $typeParams['stretch']);
 
         if ($typeParams['watermark']) {

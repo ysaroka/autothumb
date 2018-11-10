@@ -35,6 +35,20 @@ interface ThumbnailerInterface
     public function getMime();
 
     /**
+     * Gets the width of the current image resource.
+     *
+     * @return int The width.
+     */
+    public function getWidth();
+
+    /**
+     * Gets the height of the current image resource.
+     *
+     * @return int The height.
+     */
+    public function getHeight();
+
+    /**
      * Creates a thumbnail of the current resource. If crop is true, the result will be a perfect
      * fit thumbnail with the given dimensions, cropped by the center. If crop is false, the
      * thumbnail will use the best fit for the dimensions.
